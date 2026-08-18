@@ -38,6 +38,10 @@ Built with **FastAPI**, **CatBoost**, **Scikit-learn**, and **Docker**.
 │   └── test_api.py             # FastAPI endpoint and inference test cases
 ├── train/                      # Training Pipeline & Model Generation
 │   └── train_pipeline.py       # Standalone training script to train & export models
+├── notebooks/                  # Jupyter Notebooks for EDA & ML Modeling
+│   ├── EDA.ipynb
+│   ├── Feature_engineering_and_clustering.ipynb
+│   └── Feature_engineering_and_Classification.ipynb
 ├── DEPLOYMENT.md               # Guide for deploying to cloud environments
 ├── Dockerfile                  # Container build instructions
 ├── STEP_BY_STEP_GUIDE.md       # Guided code walkthrough and architecture breakdown
