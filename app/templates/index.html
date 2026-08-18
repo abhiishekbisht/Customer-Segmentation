@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Segmentation Console</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="topbar-brand">
+      <span class="brand-mark">⬩</span>
+      <span class="brand-text">SegmentLens</span>
+    </div>
+    <div class="topbar-meta">
+      <span class="status-label">SYS_STATUS</span>
+      <span class="dot" id="statusDot"></span>
+      <span id="statusText" class="mono">INIT…</span>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <!-- ============== LEFT: SPECIMEN LEDGER ============== -->
+    <section class="panel ledger-panel">
+      <div class="panel-head">
+        <h1>SPECIMEN PARAMETERS</h1>
+        <p>Enter data coordinates for classification.</p>
+      </div>
+
+      <form id="predictForm" class="ledger-form">
+
+        <div class="ledger-section">
+          <div class="section-title">01 Demographics</div>
+          <div class="ledger-grid">
+            <label class="ledger-row">
+              <span class="ledger-label">Birth Year</span>
+              <input type="number" class="ledger-input" name="Year_Birth" value="1978" min="1901" max="2015" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Household Income ($)</span>
+              <input type="number" class="ledger-input" name="Income" value="58000" min="0" step="100" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Education</span>
+              <select class="ledger-input" name="Education" required>
+                <option value="Basic">Basic</option>
+                <option value="2n Cycle">2n Cycle</option>
+                <option value="Graduation" selected>Graduation</option>
+                <option value="Master">Master</option>
+                <option value="PhD">PhD</option>
+              </select>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Marital Status</span>
+              <select class="ledger-input" name="Marital_Status" required>
+                <option value="Single">Single</option>
+                <option value="Married" selected>Married</option>
+                <option value="Together">Together</option>
+                <option value="Divorced">Divorced</option>
+                <option value="Widow">Widow</option>
+              </select>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Children</span>
+              <input type="number" class="ledger-input" name="Kidhome" value="0" min="0" max="10" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Teenagers</span>
+              <input type="number" class="ledger-input" name="Teenhome" value="1" min="0" max="10" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Cust. Since</span>
+              <input type="text" class="ledger-input" name="Dt_Customer" value="15-03-2013" pattern="\d{2}-\d{2}-\d{4}"
+                required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Days since pur.</span>
+              <input type="number" class="ledger-input" name="Recency" value="25" min="0" required>
+            </label>
+          </div>
+        </div>
+
+        <div class="ledger-section">
+          <div class="section-title">02 Spending (2Y)</div>
+          <div class="ledger-grid">
+            <label class="ledger-row">
+              <span class="ledger-label">Wine ($)</span>
+              <input type="number" class="ledger-input" name="MntWines" value="450" min="0" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Meat ($)</span>
+              <input type="number" class="ledger-input" name="MntMeatProducts" value="220" min="0" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Fruit ($)</span>
+              <input type="number" class="ledger-input" name="MntFruits" value="30" min="0" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Fish ($)</span>
+              <input type="number" class="ledger-input" name="MntFishProducts" value="45" min="0" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Sweets ($)</span>
+              <input type="number" class="ledger-input" name="MntSweetProducts" value="20" min="0" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Gold ($)</span>
+              <input type="number" class="ledger-input" name="MntGoldProds" value="60" min="0" required>
+            </label>
+          </div>
+        </div>
+
+        <div class="ledger-section">
+          <div class="section-title">03 Behavior</div>
+          <div class="ledger-grid">
+            <label class="ledger-row">
+              <span class="ledger-label">Web Purc.</span>
+              <input type="number" class="ledger-input" name="NumWebPurchases" value="6" min="0" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Store Purc.</span>
+              <input type="number" class="ledger-input" name="NumStorePurchases" value="8" min="0" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Catalog Purc.</span>
+              <input type="number" class="ledger-input" name="NumCatalogPurchases" value="4" min="0" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Discount Purc.</span>
+              <input type="number" class="ledger-input" name="NumDealsPurchases" value="3" min="0" required>
+            </label>
+            <label class="ledger-row">
+              <span class="ledger-label">Web Visits/Mo</span>
+              <input type="number" class="ledger-input" name="NumWebVisitsMonth" value="5" min="0" required>
+            </label>
+          </div>
+        </div>
+
+        <div class="ledger-section">
+          <div class="section-title">04 Campaigns</div>
+          <div class="ledger-grid checks">
+            <label class="check-row"><input type="checkbox" name="AcceptedCmp1"><span class="ledger-label">Cmp
+                1</span></label>
+            <label class="check-row"><input type="checkbox" name="AcceptedCmp2"><span class="ledger-label">Cmp
+                2</span></label>
+            <label class="check-row"><input type="checkbox" name="AcceptedCmp3"><span class="ledger-label">Cmp
+                3</span></label>
+            <label class="check-row"><input type="checkbox" name="AcceptedCmp4" checked><span class="ledger-label">Cmp
+                4</span></label>
+            <label class="check-row"><input type="checkbox" name="AcceptedCmp5"><span class="ledger-label">Cmp
+                5</span></label>
+          </div>
+        </div>
+
+        <button type="submit" id="submitBtn">PROCESS SPECIMEN ⭢</button>
+      </form>
+    </section>
+
+    <!-- ============== RIGHT: AFFINITY FIELD ============== -->
+    <section class="panel affinity-panel">
+      <div class="panel-head">
+        <h1>TOPOLOGICAL AFFINITY</h1>
+        <p>Segment density and gravity allocation.</p>
+      </div>
+
+      <div class="affinity-container">
+        <!-- Initial empty state territories -->
+        <div class="territories" id="territoriesContainer">
+
+          <div class="blob-row">
+            <div class="blob-container">
+              <div class="blob" style="transform: scale(0.3); background: var(--grid); opacity: 0.5;"></div>
+            </div>
+            <div class="t-data">
+              <div class="t-name">High Value</div>
+              <div class="t-desc">AWAITING DATA</div>
+              <div class="t-prob">--<span>%</span></div>
+            </div>
+          </div>
+
+          <div class="blob-row">
+            <div class="blob-container">
+              <div class="blob" style="transform: scale(0.3); background: var(--grid); opacity: 0.5;"></div>
+            </div>
+            <div class="t-data">
+              <div class="t-name">Standard</div>
+              <div class="t-desc">AWAITING DATA</div>
+              <div class="t-prob">--<span>%</span></div>
+            </div>
+          </div>
+
+          <div class="blob-row">
+            <div class="blob-container">
+              <div class="blob" style="transform: scale(0.3); background: var(--grid); opacity: 0.5;"></div>
+            </div>
+            <div class="t-data">
+              <div class="t-name">Risk / Inactive</div>
+              <div class="t-desc">AWAITING DATA</div>
+              <div class="t-prob">--<span>%</span></div>
+            </div>
+          </div>
+
+        </div>
+
+        <div id="resultError" class="result-error hidden"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <script>
+    const form = document.getElementById('predictForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const territoriesContainer = document.getElementById('territoriesContainer');
+    const resultError = document.getElementById('resultError');
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+
+    const SEGMENT_COLORS = { '0': 'var(--seg-0)', '1': 'var(--seg-1)', '2': 'var(--seg-2)' };
+    const SEGMENT_NAMES = { '0': 'High Value', '1': 'Standard', '2': 'Risk / Inactive' };
+
+    // Check API health
+    async function checkHealth() {
+      try {
+        const res = await fetch('/health');
+        const data = await res.json();
+        if (data.status === 'ok') {
+          statusDot.classList.add('ok');
+          statusText.textContent = 'SYS_READY';
+        } else {
+          statusDot.classList.add('bad');
+          statusText.textContent = 'SYS_ERR';
+        }
+      } catch (e) {
+        statusDot.classList.add('bad');
+        statusText.textContent = 'OFFLINE';
+      }
+    }
+    checkHealth();
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(form);
+      const payload = {};
+      for (const [key, value] of formData.entries()) {
+        payload[key] = value;
+      }
+      ['AcceptedCmp1', 'AcceptedCmp2', 'AcceptedCmp3', 'AcceptedCmp4', 'AcceptedCmp5'].forEach(k => {
+        payload[k] = form.elements[k].checked ? 1 : 0;
+      });
+      ['Year_Birth', 'Kidhome', 'Teenhome', 'Recency', 'MntWines', 'MntFruits', 'MntMeatProducts',
+        'MntFishProducts', 'MntSweetProducts', 'MntGoldProds', 'NumDealsPurchases', 'NumWebPurchases',
+        'NumCatalogPurchases', 'NumStorePurchases', 'NumWebVisitsMonth'].forEach(k => {
+          payload[k] = parseInt(payload[k], 10);
+        });
+      payload['Income'] = parseFloat(payload['Income']);
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'PROCESSING...';
+      resultError.classList.add('hidden');
+
+      try {
+        const res = await fetch('/api/predict', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.detail || 'Prediction failed');
+        }
+
+        const data = await res.json();
+        renderResult(data);
+      } catch (err) {
+        resultError.classList.remove('hidden');
+        resultError.textContent = 'ERR: ' + err.message;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'PROCESS SPECIMEN ⭢';
+      }
+    });
+
+    function renderResult(data) {
+      territoriesContainer.innerHTML = '';
+
+      let maxProb = -1;
+      let winnerCluster = null;
+
+      Object.entries(data.probabilities).forEach(([cluster, prob]) => {
+        if (prob > maxProb) {
+          maxProb = prob;
+          winnerCluster = cluster;
+        }
+      });
+
+      Object.entries(data.probabilities)
+        // Keep cluster order consistent (0, 1, 2)
+        .sort((a, b) => parseInt(a[0]) - parseInt(b[0]))
+        .forEach(([cluster, prob]) => {
+
+          const isWinner = cluster === winnerCluster;
+          const displayProb = (prob * 100).toFixed(1);
+
+          const row = document.createElement('div');
+          row.className = `blob-row ${isWinner ? 'winner' : ''}`;
+      
+      const displayName = data.segment_name && isWinner ? data.segment_name : SEGMENT_NAMES[cluster] || `CLUSTER ${cluster}`;
+      
+      // Blob physics: scale base 0.3, max 1.2; opacity base 0.1, max 0.9
+      const scale = 0.3 + (prob * 0.9);
+      const opacity = 0.1 + (prob * 0.8);
+      const color = SEGMENT_COLORS[cluster];
+
+      row.innerHTML = `
+        <div class="blob-container">
+          <div class="blob" style="transform: scale(${scale}); background: ${color}; opacity: ${opacity};"></div>
+        </div>
+        <div class="t-data">
+          <div class="t-name">${displayName}</div>
+          <div class="t-desc">${isWinner ? 'PRIMARY AFFINITY' : 'SECONDARY'}</div>
+          <div class="t-prob">${displayProb}<span>%</span></div>
+        </div>
+      `;
+      
+      territoriesContainer.appendChild(row);
+    });
+}
+  </script>
+</body>
+
+</html>

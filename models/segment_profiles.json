@@ -1,0 +1,23 @@
+{
+  "0": {
+    "size": 946,
+    "avg_income": 34177.46,
+    "avg_total_spending": 77.29,
+    "avg_age": 54.4,
+    "segment_name": "Low-Value"
+  },
+  "1": {
+    "size": 590,
+    "avg_income": 75727.04,
+    "avg_total_spending": 1327.3,
+    "avg_age": 57.6,
+    "segment_name": "High-Value"
+  },
+  "2": {
+    "size": 704,
+    "avg_income": 56821.35,
+    "avg_total_spending": 711.24,
+    "avg_age": 60.4,
+    "segment_name": "Mid-Value"
+  }
+}

@@ -1,0 +1,16 @@
+# Pinned to exact versions that were tested together for this project.
+# Pinning matters: an unpinned `fastapi` install six months from now could
+# pull a version with breaking changes (this project itself hit one --
+# Starlette's TemplateResponse signature changed between versions).
+
+fastapi==0.141.1
+uvicorn[standard]==0.52.1
+pydantic==2.13.4
+python-multipart==0.0.32
+jinja2==3.1.6
+
+pandas==3.0.2
+numpy==2.4.4
+scikit-learn==1.8.0
+catboost==1.2.10
+joblib==1.5.3

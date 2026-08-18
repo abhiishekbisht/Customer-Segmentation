@@ -1,0 +1,16 @@
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "DTZ"]
+
+# DTZ002 (naive datetime.today()) is disabled project-wide: every date
+# in marketing_campaign.csv is a plain calendar date with no timezone
+# info, so making these datetimes timezone-aware would be false
+# precision, not a real fix. If this project starts handling timestamps
+# that DO carry timezone meaning, re-enable this rule.
+ignore = ["DTZ002"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

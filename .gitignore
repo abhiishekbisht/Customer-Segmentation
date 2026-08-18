@@ -1,0 +1,55 @@
+# Environments & Virtual Envs
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Python byte-compiled / module files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# PRD & Planning Files (Excluded as requested)
+PRD.md
+*PRD*.md
+PRD/
+
+# Secrets & Environment Variables
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Model Artifacts & ML Training Logs
+models/*.pkl
+models/*.joblib
+models/*.cbm
+catboost_info/
+**/catboost_info/
+
+# Datasets & Large Data Files
+*.csv
+data/
+notebooks/data/
+notebooks/*.csv
+
+# Testing & Linting Caches
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# OS & Editor Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
