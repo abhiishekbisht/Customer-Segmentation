@@ -23,8 +23,8 @@ PRD/
 !.env.example
 
 # Model Artifacts & ML Training Logs
-models/*.pkl
-models/*.joblib
+# models/*.pkl
+# models/*.joblib
 models/*.cbm
 catboost_info/
 **/catboost_info/

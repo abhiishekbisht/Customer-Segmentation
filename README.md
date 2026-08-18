@@ -133,7 +133,15 @@ Access the containerized web UI at [http://localhost:8000](http://localhost:8000
 3. Connect your GitHub repository: `https://github.com/abhiishekbisht/Customer-Segmentation`.
 4. Render will automatically detect [`render.yaml`](file:///Users/datalynx/Downloads/customer-segmentation-api/render.yaml), build your Docker container, and deploy your live URL with free HTTPS.
 
-### Option 2: Deploy to Railway
+### Option 2: Deploy to Koyeb (Free Docker Cloud Hosting)
+
+1. Log in to [Koyeb.com](https://app.koyeb.com/).
+2. Click **Create Service** -> Select **GitHub**.
+3. Choose your repository: `abhiishekbisht/Customer-Segmentation`.
+4. Select **Builder: Dockerfile** (it will auto-detect your `Dockerfile` on port `8000`).
+5. Click **Deploy**! Koyeb will build and host your API with a free `.koyeb.app` HTTPS domain.
+
+### Option 3: Deploy to Railway
 
 1. Log in to [Railway.app](https://railway.app/).
 2. Click **New Project** -> **Deploy from GitHub repo**.

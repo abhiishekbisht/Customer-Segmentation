@@ -45,8 +45,8 @@ COPY models/ ./models/
 
 # The model artifacts must already exist (run train/train_pipeline.py
 # before building, or in a CI step — see DEPLOYMENT.md).
-RUN test -f models/catboost_model.joblib || \
-    (echo "ERROR: models/catboost_model.joblib missing. Run 'python train/train_pipeline.py' before building the image." && exit 1)
+RUN test -f models/catboost_model.pkl || \
+    (echo "ERROR: models/catboost_model.pkl missing. Run 'python train/train_pipeline.py' before building the image." && exit 1)
 
 RUN chown -R app:app /app
 USER app
