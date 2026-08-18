@@ -124,6 +124,24 @@ Access the containerized web UI at [http://localhost:8000](http://localhost:8000
 
 ---
 
+## ☁️ Cloud Deployment (Free PaaS)
+
+### Option 1: Deploy to Render (Recommended - 1 Click Blueprint)
+
+1. Log in to [Render.com](https://render.com/).
+2. Click **New +** -> **Blueprints**.
+3. Connect your GitHub repository: `https://github.com/abhiishekbisht/Customer-Segmentation`.
+4. Render will automatically detect [`render.yaml`](file:///Users/datalynx/Downloads/customer-segmentation-api/render.yaml), build your Docker container, and deploy your live URL with free HTTPS.
+
+### Option 2: Deploy to Railway
+
+1. Log in to [Railway.app](https://railway.app/).
+2. Click **New Project** -> **Deploy from GitHub repo**.
+3. Select `abhiishekbisht/Customer-Segmentation`.
+4. Railway will build the `Dockerfile` automatically and provide a public URL.
+
+---
+
 ## 📚 Documentation
 
 For additional guides:
